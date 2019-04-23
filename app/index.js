@@ -4,10 +4,11 @@ module.exports = class extends Generator {
   async initializing() {
     this.defaults = {
       name: this.determineAppname().replace(/[^a-zA-Z0-9_]/, '_'),
+      version: '0.1.0',
       author: this.user.git.name(),
       email: this.user.git.email(),
       username: await this.user.github.username(),
-      python: '3.6.2',
+      python: '3.6.8',
     }
   }
 
@@ -29,6 +30,13 @@ module.exports = class extends Generator {
     Object.assign(
       this.answers,
       await this.prompt([
+        {
+          type: 'input',
+          name: 'version',
+          message: 'The initial version:',
+          default: this.defaults.version,
+          hidden: true,
+        },
         {
           type: 'input',
           name: 'author',
@@ -66,42 +74,52 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    ;['pyproject.toml', 'LICENSE'].forEach(path => {
-      this.fs.copyTpl(
-        this.templatePath(path),
-        this.destinationPath(path),
-        this.answers,
-      )
+    ;['pyproject.toml', 'LICENSE', 'docs/conf.py', 'docs/index.rst'].forEach(
+      path => {
+        this.fs.copyTpl(
+          this.templatePath(path),
+          this.destinationPath(path),
+          this.answers,
+        )
+      },
+    )
+    ;['docs/Makefile', 'docs/make.bat'].forEach(path => {
+      this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
   }
 
   _spawn(...args) {
     const child = this.spawnCommand(...args)
     return new Promise((resolve, reject) => {
-      child.on('exit', ({ code, signal }) => {
+      child.on('exit', (code, signal) => {
         if (code === 0) {
           resolve()
         } else {
           reject({ code, signal })
         }
       })
+      child.on('error', reject)
     })
   }
 
-  // async install() {
-  //   await this._spawn('pyenv', ['local', this.answers.python])
-  //   await this._spawn('poetry', [
-  //     'add',
-  //     '--dev',
-  //     'mypy',
-  //     'pydocstyle',
-  //     'pylint',
-  //     'pytest',
-  //     'pytest-cov',
-  //     'sphinx',
-  //     'sphinx-autobuild',
-  //     'sphinx_rtd_theme',
-  //     'toml',
-  //   ])
-  // }
+  async install() {
+    try {
+      await this._spawn('pyenv', ['local', this.answers.python])
+      await this._spawn('poetry', [
+        'add',
+        '--dev',
+        'mypy',
+        'pydocstyle',
+        'pylint',
+        'pytest',
+        'pytest-cov',
+        'sphinx',
+        'sphinx-autobuild',
+        'sphinx_rtd_theme',
+        'toml',
+      ])
+    } catch (cause) {
+      this.log(cause)
+    }
+  }
 }

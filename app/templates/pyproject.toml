@@ -1,28 +1,18 @@
 [tool.poetry]
-name = "<%- name -%>"
-version = "0.1.0"
+name = "<%- name %>"
+version = "<%- version %>"
 description = ""
-authors = ["<%- author -%> <<%- email -%>>"]
-packages = [{ include = "<%- name -%>" }]
-documentation = "<%- documentation -%>"
-repository = "<%- repository -%>"
+authors = ["<%- author %> <<%- email %>>"]
+packages = [{ include = "<%- name %>" }]
+documentation = "<%- documentation %>"
+repository = "<%- repository %>"
 readme = "README.rst"
 license = "ISC"
 
 [tool.poetry.dependencies]
-python = "^<%- python -%>"
-typing_extensions = "^3.6"
+python = "^<%- python %>"
 
 [tool.poetry.dev-dependencies]
-pytest = "^3.0"
-pylint = "^2.2"
-mypy = "^0.650.0"
-pydocstyle = "^3.0"
-pytest-cov = "^2.6"
-sphinx = "^1.8"
-sphinx-autobuild = "^0.7.1"
-sphinx_rtd_theme = "^0.4.2"
-toml = "^0.10.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
