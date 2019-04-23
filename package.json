@@ -1,8 +1,15 @@
 {
-  "name": "generator-python",
+  "name": "@thejohnfreeman/generator-python",
   "version": "0.1.0",
   "description": "A Python 3 package with docs, lint, tests, and CI.",
-  "repository": "https://github.com/thejohnfreeman/generator-python",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejohnfreeman/generator-python.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thejohnfreeman/generator-python/issues"
+  },
+  "homepage": "https://github.com/thejohnfreeman/generator-python#readme",
   "author": "John Freeman <jfreeman08@gmail.com>",
   "license": "ISC",
   "files": [
@@ -14,6 +21,9 @@
     "generator",
     "python"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "generator-license": "^5.4.0",
     "yeoman-generator": "^3.2.0"

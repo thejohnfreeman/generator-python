@@ -4,6 +4,29 @@ A [Yeoman](https://yeoman.io/) generator for a Python 3 package with docs,
 lint, tests, and continuous integration.
 
 
+## Install
+
+```shell
+$ yarn global add yeoman @thejohnfreeman/generator-python
+```
+
+This generator assumes you are using [pyenv](https://github.com/pyenv/pyenv)
+for managing Python versions and [poetry](https://poetry.eustace.io/) for
+managing Python packages.
+
+```shell
+$ curl -sSL https://pyenv.run | bash
+$ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+```
+
+
+## Use
+
+```shell
+$ yo python
+```
+
+
 ## Options
 
 Although there are some parameters to this generator, such as the package name
