@@ -7,7 +7,6 @@ module.exports = class extends Generator {
       author: this.user.git.name(),
       email: this.user.git.email(),
       username: await this.user.github.username(),
-      license: 'ISC',
       python: '3.6.2',
     }
   }
@@ -64,12 +63,15 @@ module.exports = class extends Generator {
         },
       ]),
     )
+  }
 
-    this.composeWith(require.resolve('generator-license/app'), {
-      name: this.answers.author,
-      email: this.answers.email,
-      website: this.answers.repository,
-      defaultLicense: this.defaults.license,
+  writing() {
+    ;['pyproject.toml', 'LICENSE'].forEach(path => {
+      this.fs.copyTpl(
+        this.templatePath(path),
+        this.destinationPath(path),
+        this.answers,
+      )
     })
   }
 
