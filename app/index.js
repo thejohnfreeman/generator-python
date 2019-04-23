@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const Generator = require('yeoman-generator')
 
 module.exports = class extends Generator {
@@ -73,19 +75,30 @@ module.exports = class extends Generator {
     )
   }
 
-  writing() {
-    ;['pyproject.toml', 'LICENSE', 'docs/conf.py', 'docs/index.rst'].forEach(
-      path => {
-        this.fs.copyTpl(
-          this.templatePath(path),
-          this.destinationPath(path),
-          this.answers,
-        )
-      },
-    )
-    ;['docs/Makefile', 'docs/make.bat'].forEach(path => {
+  async writing() {
+    ;[
+      'pyproject.toml',
+      'LICENSE',
+      'Makefile',
+      'docs/conf.py',
+      'docs/index.rst',
+    ].forEach(path => {
+      this.fs.copyTpl(
+        this.templatePath(path),
+        this.destinationPath(path),
+        this.answers,
+      )
+    })
+    ;[
+      '.gitignore',
+      '.pylintrc',
+      '.travis.yml',
+      'docs/Makefile',
+      'docs/make.bat',
+    ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
+    await fs.promises.mkdir(this.destinationPath('tests'))
   }
 
   _spawn(...args) {
