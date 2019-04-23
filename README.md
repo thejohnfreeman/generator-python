@@ -25,7 +25,7 @@ git checkout $(git rev-list -1 HEAD -- "$file")^ -- "$file"
 | `author` | `string` | The author name. Default comes from your Git configuration. This generator assumes a single author. If you need to add more, add them after the generator finishes. |
 | `email` | `string` | The author email. Default comes from your Git configuration. |
 | `license` | `string` | The package license. Default is [ISC][]. Defers to [generator-license][]. |
-| `python` | `string` | The minimum version of Python. Default is the maximum required by the default dependencies.
+| `python` | `string` | The minimum supported version of Python. Default is the maximum required by the default dependencies. |
 
 [ISC]: https://tldrlegal.com/license/-isc-license#summary
 [generator-license]: https://github.com/jozefizso/generator-license/
