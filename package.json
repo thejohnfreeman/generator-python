@@ -1,0 +1,20 @@
+{
+  "name": "generator-python",
+  "version": "0.1.0",
+  "description": "A Python 3 package with docs, lint, tests, and CI.",
+  "repository": "https://github.com/thejohnfreeman/generator-python",
+  "author": "John Freeman <jfreeman08@gmail.com>",
+  "license": "ISC",
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "yeoman",
+    "generator",
+    "python"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.2.0"
+  }
+}
