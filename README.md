@@ -56,35 +56,5 @@ git checkout $(git rev-list -1 HEAD -- "$file")^ -- "$file"
 
 ## Why not [Cookiecutter](https://github.com/audreyr/cookiecutter)?
 
-Granted, it seems odd to offer a Python project template through the Node
-ecosystem, but Yeoman seems more principled and more polished than
-Cookiecutter:
-
-- Yeoman has configuration *functions* out of the box. Cookiecutter puts the
-    default configuration in a JSON file. Thus, Cookiecutter cannot handle
-    dynamic defaults, e.g. pulling the default author from your Git
-    configuration.
-
-- Yeoman has the concept of composable generators, which lets me reuse [someone
-    else's implementation of license choices][generator-license]. Cookiecutter
-    does not have composable generators.
-
-- A Yeoman generator's dependencies are installed by npm when you install the
-  generator. Cookiecutter
-  [requires](https://cookiecutter.readthedocs.io/en/latest/advanced/template_extensions.html)
-  the *user* to discover and install a generator's dependencies before running
-  the generator.
-
-- Yeoman has better looking documentation, which in my opinion is a good
-  indicator of project maturity. Cookiecutter has scrambled documentation.
-  Some sections are incomplete, and some appear to be duplicates (e.g. ["Learn
-  the Basics of Cookiecutter by Creating
-  a Cookiecutter"](https://cookiecutter.readthedocs.io/en/latest/first_steps.html)
-  and ["Create a Cookiecutter From
-  Scratch"](https://cookiecutter.readthedocs.io/en/latest/tutorial2.html)).
-
-- At the time of this writing (2019-04-22), Cookiecutter's master branch was
-    last changed 4 months ago, and the docs were last changed 11 months ago,
-    which suggests to me that the project is unmaintained. Given the gaps
-    above, I do not believe this project is complete enough to transition to
-    a maintenance mode.
+I explain my reasons on [my
+blog](https://jfreeman.dev/blog/2019/04/24/cookiecutter-vs-yeoman/).
