@@ -1,7 +1,9 @@
 # generator-python
 
-A [Yeoman](https://yeoman.io/) generator for a Python 3 package with docs,
-lint, tests, and continuous integration.
+A [Yeoman][] generator for a Python 3 package with docs, lint, tests, and
+continuous integration.
+
+[Yeoman]: https://yeoman.io/
 
 
 ## Install
@@ -11,8 +13,9 @@ $ yarn global add yeoman @thejohnfreeman/generator-python
 ```
 
 This generator assumes you are using [pyenv](https://github.com/pyenv/pyenv)
-for managing Python versions and [poetry](https://poetry.eustace.io/) for
-managing Python packages.
+for managing Python versions and [Poetry][] for managing Python packages.
+
+[Poetry]: https://poetry.eustace.io/
 
 ```shell
 $ curl -sSL https://pyenv.run | bash
@@ -21,6 +24,8 @@ $ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry
 
 
 ## Use
+
+From within your project directory:
 
 ```shell
 $ yo python
@@ -39,15 +44,17 @@ re-running the generator and potentially overwriting other files, but by
 deleted](https://stackoverflow.com/a/1113140/61890://stackoverflow.com/a/1113140/618906):
 
 ```shell
-git checkout $(git rev-list -1 HEAD -- "$file")^ -- "$file"
+$ git checkout $(git rev-list -1 HEAD -- "$file")^ -- "$file"
 ```
 
 | Option | Type | Description |
 | ------ | ---- | ----------- |
 | `name` | `string` | The package name. Default is the name of the current directory. |
+| `version` | `string` | The first version string. Default is `0.1.0`. |
 | `author` | `string` | The author name. Default comes from your Git configuration. This generator assumes a single author. If you need to add more, add them after the generator finishes. |
 | `email` | `string` | The author email. Default comes from your Git configuration. |
-| `license` | `string` | The package license. Default is [ISC][]. Defers to [generator-license][]. |
+| `repository` | `string` | The repository URL. Default is the package name within your namespace on [`github.com`](https://github.com). |
+| `documentation` | `string` | The documentation URL. Default is the package name on [`readthedocs.org`](https://readthedocs.org/). |
 | `python` | `string` | The minimum supported version of Python. Default is the maximum required by the default dependencies. |
 
 [ISC]: https://tldrlegal.com/license/-isc-license#summary

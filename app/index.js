@@ -5,7 +5,7 @@ const Generator = require('yeoman-generator')
 module.exports = class extends Generator {
   async initializing() {
     this.defaults = {
-      name: this.determineAppname().replace(/[^a-zA-Z0-9_]/, '_'),
+      name: this.determineAppname().replace(/[^a-zA-Z0-9_]/g, '_'),
       version: '0.1.0',
       author: this.user.git.name(),
       email: this.user.git.email(),
@@ -130,6 +130,7 @@ module.exports = class extends Generator {
         'sphinx-autobuild',
         'sphinx_rtd_theme',
         'toml',
+        'yapf',
       ])
     } catch (cause) {
       this.log(cause)
