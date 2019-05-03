@@ -49,12 +49,16 @@ module.exports = class extends Generator {
       },
       {
         type: 'input',
+        name: 'username',
+        message: 'The owner username:',
+        default: this.defaults.username,
+      },
+      {
+        type: 'input',
         name: 'repository',
         message: 'The repository URL:',
         default: answers =>
-          `https://github.com/${this.defaults.username}/${
-            answers.project_name
-          }/`,
+          `https://github.com/${answers.username}/${answers.project_name}/`,
       },
       {
         type: 'input',
