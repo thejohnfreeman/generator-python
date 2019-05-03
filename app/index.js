@@ -93,7 +93,14 @@ module.exports = class extends Generator {
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
-    await fs.promises.mkdir(this.destinationPath('tests'))
+    try {
+      await fs.promises.mkdir(this.destinationPath('tests'))
+    } catch (cause) {
+      // Ignore if the directory already exists.
+      if (cause.code !== 'EEXIST') {
+        throw cause
+      }
+    }
   }
 
   _spawn(...args) {
