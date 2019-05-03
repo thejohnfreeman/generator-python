@@ -23,16 +23,9 @@ module.exports = class extends Generator {
         default: this.defaults.project_name,
       },
       {
-        type: 'list',
-        name: 'package_or_module',
-        message: 'Package or module?',
-        default: 'package',
-        choices: ['package', 'module'],
-      },
-      {
         type: 'input',
         name: 'package_name',
-        message: answers => `The ${answers.package_or_module} name:`,
+        message: answers => `The package (or module) name:`,
         default: answers => answers.project_name.replace(/[^a-zA-Z0-9_]/g, '_'),
       },
       {
@@ -97,20 +90,6 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
     await fs.promises.mkdir(this.destinationPath('tests'))
-    if (this.answers.package_or_module === 'package') {
-      await fs.promises.mkdir(this.destinationPath(this.answers.package_name))
-      const fh = await fs.promises.open(
-        this.destinationPath(this.answers.package_name, '__init__.py'),
-        'w',
-      )
-      await fh.close()
-    } else {
-      const fh = await fs.promises.open(
-        this.destinationPath(this.answers.package_name + '.py'),
-        'w',
-      )
-      await fh.close()
-    }
   }
 
   _spawn(...args) {
