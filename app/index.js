@@ -128,7 +128,7 @@ module.exports = class extends Generator {
         'pylint',
         'pytest',
         'pytest-cov',
-        'sphinx',
+        'sphinx=^1.8',
         'sphinx-autobuild',
         'sphinx_rtd_theme',
         'toml',
