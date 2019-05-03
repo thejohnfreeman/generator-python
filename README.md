@@ -49,12 +49,13 @@ $ git checkout $(git rev-list -1 HEAD -- "$file")^ -- "$file"
 
 | Option | Type | Description |
 | ------ | ---- | ----------- |
-| `name` | `string` | The package name. Default is the name of the current directory. |
+| `project_name` | `string` | The project name. The project namespace is distinct from the package namespace. Think GitHub and Read the Docs, where your project coexists with projects from other language ecosystems. Default is the name of the current directory. |
+| `package_name` | `string` | The package name, i.e. the name your users will import.This will be the name of your PyPI package, too, but if that name is already taken, you will need to change it in `pyproject.toml` and `README.rst`. Default is the project name sanitized to a Python identifier. |
+| `package_or_module` | `"package"|"module"` | Whether this will be a package (directory) or module (single file). |
 | `version` | `string` | The first version string. Default is `0.1.0`. |
 | `author` | `string` | The author name. Default comes from your Git configuration. This generator assumes a single author. If you need to add more, add them after the generator finishes. |
 | `email` | `string` | The author email. Default comes from your Git configuration. |
-| `repository` | `string` | The repository URL. Default is the package name within your namespace on [`github.com`](https://github.com). |
-| `documentation` | `string` | The documentation URL. Default is the package name on [`readthedocs.org`](https://readthedocs.org/). |
+| `repository` | `string` | The repository URL. Default is the project name within your namespace on [`github.com`](https://github.com). |
 | `python` | `string` | The minimum supported version of Python. Default is the maximum required by the default dependencies. |
 
 [ISC]: https://tldrlegal.com/license/-isc-license#summary

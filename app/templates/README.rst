@@ -1,23 +1,23 @@
-<%- '='.repeat(name.length) %>
-<%- name %>
-<%- '='.repeat(name.length) %>
-
 .. start-include
 
-.. image:: https://travis-ci.org/<%- username %>/<%- name %>.svg?branch=master
-   :target: https://travis-ci.org/<%- username %>/<%- name %>
+<%- '='.repeat(package_name.length) %>
+<%- package_name %>
+<%- '='.repeat(package_name.length) %>
+
+.. image:: https://travis-ci.org/<%- username %>/<%- project_name %>.svg?branch=master
+   :target: https://travis-ci.org/<%- username %>/<%- project_name %>
    :alt: Build status
 
-.. image:: https://readthedocs.org/projects/<%- name %>/badge/?version=latest
-   :target: https://<%- name %>.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/<%- project_name %>/badge/?version=latest
+   :target: https://<%- project_name %>.readthedocs.io/
    :alt: Documentation status
 
-.. image:: https://img.shields.io/pypi/v/<%- name %>.py.svg
-   :target: https://pypi.org/project/<%- name %>.py/
+.. image:: https://img.shields.io/pypi/v/<%- package_name %>.py.svg
+   :target: https://pypi.org/project/<%- package_name %>.py/
    :alt: Latest PyPI version
 
-.. image:: https://img.shields.io/pypi/pyversions/<%- name %>.py.svg
-   :target: https://pypi.org/project/<%- name %>.py/
+.. image:: https://img.shields.io/pypi/pyversions/<%- package_name %>.py.svg
+   :target: https://pypi.org/project/<%- package_name %>.py/
    :alt: Python versions supported
 
 .. end-include

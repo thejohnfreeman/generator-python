@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = '<%- name %>'
+project = '<%- package_name %>'
 copyright = '<%- new Date().getFullYear() %>, <%- author %>'
 author = '<%- author %>'
 

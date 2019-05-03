@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "<%- name %>"
+name = "<%- package_name %>"
 version = "<%- version %>"
 description = ""
 authors = ["<%- author %> <<%- email %>>"]
-packages = [{ include = "<%- name %>" }]
-documentation = "<%- documentation %>"
+packages = [{ include = "<%- package_name %>" }]
+documentation = "https://<%- project_name %>.readthedocs.io/"
 repository = "<%- repository %>"
 readme = "README.rst"
 license = "ISC"

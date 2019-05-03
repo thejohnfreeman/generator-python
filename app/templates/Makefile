@@ -1,6 +1,6 @@
 .PHONY : html lint test serve
 
-PACKAGE := <%- name %>
+PACKAGE := <%- package_name %>
 
 html :
 	${MAKE} -C docs html
