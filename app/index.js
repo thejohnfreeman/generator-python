@@ -91,17 +91,10 @@ module.exports = class extends Generator {
       'docs/Makefile',
       'docs/make.bat',
       'docs/_static',
+      'tests',
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
-    try {
-      await fs.promises.mkdir(this.destinationPath('tests'))
-    } catch (cause) {
-      // Ignore if the directory already exists.
-      if (cause.code !== 'EEXIST') {
-        throw cause
-      }
-    }
   }
 
   _spawn(...args) {
