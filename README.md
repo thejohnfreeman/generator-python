@@ -5,6 +5,9 @@ continuous integration.
 
 [Yeoman]: https://yeoman.io/
 
+[![npm](https://img.shields.io/npm/v/@thejohnfreeman/generator-python.svg)](https://www.npmjs.com/package/@thejohnfreeman/generator-python)
+[![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+
 
 ## Preview
 
