@@ -6,6 +6,17 @@ continuous integration.
 [Yeoman]: https://yeoman.io/
 
 
+## Preview
+
+Take a look at the [sample
+project](https://github.com/thejohnfreeman/project-template-python) built with
+this generator. It is tested on [Travis
+CI](https://travis-ci.org/thejohnfreeman/project-template-python) and
+published on [PyPI](https://pypi.org/project/project_template/) with
+documentation on [Read the
+Docs](https://project-template-python.readthedocs.io/).
+
+
 ## Install
 
 ```shell
