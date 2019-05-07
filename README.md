@@ -12,13 +12,14 @@ continuous integration.
 $ yarn global add yeoman @thejohnfreeman/generator-python
 ```
 
-This generator assumes you are using [pyenv](https://github.com/pyenv/pyenv)
-for managing Python versions and [Poetry][] for managing Python packages.
+This generator assumes you are using [Poetry][] for managing Python packages.
+It will use whatever Python version is activated in your environment.
+I recommend using [pyenv][] to manage different versions of Python.
 
+[pyenv]: https://github.com/pyenv/pyenv
 [Poetry]: https://poetry.eustace.io/
 
 ```shell
-$ curl -sSL https://pyenv.run | bash
 $ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 ```
 

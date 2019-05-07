@@ -113,7 +113,6 @@ module.exports = class extends Generator {
 
   async install() {
     try {
-      await this._spawn('pyenv', ['local', this.answers.python])
       await this._spawn('poetry', [
         'add',
         '--dev',
