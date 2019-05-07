@@ -1,0 +1,7 @@
+build:
+  image: latest
+python:
+  version: 3.<%- python_minor %>
+  pip_install: true
+  extra_requirements:
+    - docs

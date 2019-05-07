@@ -109,6 +109,7 @@ module.exports = class extends Generator {
       '.travis.yml',
       'docs/conf.py',
       'docs/index.rst',
+      '.readthedocs.yml',
     ].forEach(path => {
       this.fs.copyTpl(
         this.templatePath(path),
