@@ -10,7 +10,7 @@ readme = "README.rst"
 license = "ISC"
 
 [tool.poetry.dependencies]
-python = "^<%- python %>"
+python = "^3.<%- python_minor %>-dev"
 
 [tool.poetry.dev-dependencies]
 

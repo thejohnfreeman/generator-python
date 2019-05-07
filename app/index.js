@@ -1,6 +1,8 @@
-const fs = require('fs')
+const fse = require('fs-extra')
 
 const Generator = require('yeoman-generator')
+
+const PYTHON3_VERSION_PATTERN = /^3\.([0-9]+)/
 
 module.exports = class extends Generator {
   async initializing() {
@@ -10,11 +12,35 @@ module.exports = class extends Generator {
       author: this.user.git.name(),
       email: this.user.git.email(),
       username: await this.user.github.username(),
-      python: '3.6.8',
     }
   }
 
+  async _getPythonMinorVersion() {
+    let version
+    try {
+      version = await fse.readFile('.python-version')
+    } catch (cause) {
+      if (cause.code === 'ENOENT') {
+        console.warn('You have not set a local Python version with pyenv.')
+      }
+      return 6
+    }
+    const match = PYTHON3_VERSION_PATTERN.exec(version)
+    if (!match) {
+      throw new Error(
+        `The local python version is ${version}, but Poetry only supports Python 3.`,
+      )
+    }
+    const minor = parseInt(match[1])
+    return minor < 6 ? 6 : minor
+  }
+
   async prompting() {
+    // We would like to set all defaults in the constructor, but we cannot
+    // call asynchronous functions there.
+    const python_minor = await this._getPythonMinorVersion()
+    this.defaults.python_minor = python_minor
+
     this.answers = await this.prompt([
       {
         type: 'input',
@@ -61,10 +87,15 @@ module.exports = class extends Generator {
           `https://github.com/${answers.username}/${answers.project_name}/`,
       },
       {
-        type: 'input',
-        name: 'python',
+        type: 'list',
+        name: 'python_minor',
         message: 'The minimum supported version of Python:',
-        default: this.defaults.python,
+        choices: [
+          { name: '3.6-dev', value: 6 },
+          { name: '3.7-dev', value: 7 },
+          { name: '3.8-dev', value: 8 },
+        ],
+        default: this.defaults.python_minor,
       },
     ])
   }
@@ -75,6 +106,7 @@ module.exports = class extends Generator {
       'README.rst',
       'LICENSE',
       'Makefile',
+      '.travis.yml',
       'docs/conf.py',
       'docs/index.rst',
     ].forEach(path => {
@@ -87,7 +119,6 @@ module.exports = class extends Generator {
     ;[
       '.gitignore',
       '.pylintrc',
-      '.travis.yml',
       'docs/Makefile',
       'docs/make.bat',
       'docs/_static',
