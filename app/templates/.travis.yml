@@ -10,20 +10,23 @@ script:
 
 matrix:
   include:
+    # Only test versions of Python greater than our minimum supported.
+    <%_ if (6 >= python_minor) { _%>
     - os: linux
       dist: xenial
       python: 3.6-dev
-    <%_ if (python_minor >= 7) { _%>
+    <%_ } _%>
+    <%_ if (7 >= python_minor) { _%>
     - os: linux
       dist: xenial
       python: 3.7-dev
     <%_ } _%>
-    <%_ if (python_minor >= 8) { _%>
+    <%_ if (8 >= python_minor) { _%>
     - os: linux
       dist: xenial
       python: 3.8-dev
     <%_ } _%>
-    <%_ if (python_minor >= 7) { _%>
+    <%_ if (7 >= python_minor) { _%>
     - os: osx
       # `xcode10.2` has Python 3.7.3.
       osx_image: xcode10.2
