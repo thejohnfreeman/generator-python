@@ -71,4 +71,13 @@ html_theme = 'sphinx_rtd_theme'
 #
 html_theme_options = {
     'display_version': True,
+    'prev_next_buttons_location': 'top',
+}
+
+html_static_path = ['_static']
+
+html_context = {
+    'css_files': [
+        '_static/table.css',  # Make text wrap in tables in RTD theme.
+    ],
 }

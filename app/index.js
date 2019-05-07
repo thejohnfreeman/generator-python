@@ -90,6 +90,7 @@ module.exports = class extends Generator {
       '.travis.yml',
       'docs/Makefile',
       'docs/make.bat',
+      'docs/_static',
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
