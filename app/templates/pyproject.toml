@@ -3,14 +3,17 @@ name = "<%- package_name %>"
 version = "<%- version %>"
 description = ""
 authors = ["<%- author %> <<%- email %>>"]
-packages = [{ include = "<%- package_name %>" }]
 documentation = "https://<%- project_name %>.readthedocs.io/"
 repository = "<%- repository %>"
 readme = "README.rst"
 license = "ISC"
+packages = [{ include = "<%- package_name %><%= (package_or_module === 'module') ? '.py' : '' %>" }]
 
 [tool.poetry.dependencies]
 python = "^3.<%- python_minor %>-dev"
+
+[tool.poetry.extras]
+docs = ["sphinx", "sphinx_rtd_theme", "toml"]
 
 [tool.poetry.dev-dependencies]
 

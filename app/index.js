@@ -49,9 +49,16 @@ module.exports = class extends Generator {
         default: this.defaults.project_name,
       },
       {
+        type: 'list',
+        name: 'package_or_module',
+        message: 'Package or module?',
+        choices: ['package', 'module'],
+        default: 'package',
+      },
+      {
         type: 'input',
         name: 'package_name',
-        message: answers => `The package (or module) name:`,
+        message: answers => `The ${answers.package_or_module} name:`,
         default: answers => answers.project_name.replace(/[^a-zA-Z0-9_]/g, '_'),
       },
       {
@@ -127,6 +134,17 @@ module.exports = class extends Generator {
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
     })
+    if (this.answers.package_or_module === 'package') {
+      this.fs.copy(
+        this.templatePath('package'),
+        this.destinationPath(this.answers.package_name),
+      )
+    } else {
+      this.fs.copy(
+        this.templatePath('module.py'),
+        this.destinationPath(this.answers.package_name + '.py'),
+      )
+    }
   }
 
   _spawn(...args) {
@@ -158,6 +176,13 @@ module.exports = class extends Generator {
         'sphinx_rtd_theme',
         'toml',
         'yapf',
+      ])
+      await this._spawn('poetry', [
+        'add',
+        '--optional',
+        'sphinx=^1.8',
+        'sphinx_rtd_theme',
+        'toml',
       ])
     } catch (cause) {
       this.log(cause)

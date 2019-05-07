@@ -6,7 +6,7 @@ html :
 	${MAKE} -C docs html
 
 lint :
-	mypy ${PACKAGE}.py tests
+	mypy ${PACKAGE}<%= (package_or_module === 'module') ? '.py' : '' %> tests
 	pylint --jobs $(shell nproc) ${PACKAGE} tests
 	pydocstyle ${PACKAGE} tests
 
