@@ -124,6 +124,13 @@ module.exports = class extends Generator {
         this.answers,
       )
     })
+    if (7 >= this.answers.python_minor) {
+      this.fs.copyTpl(
+        this.templatePath('.appveyor.yml'),
+        this.destinationPath('.appveyor.yml'),
+        this.answers,
+      )
+    }
     ;[
       '.gitignore',
       '.pylintrc',
