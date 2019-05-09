@@ -1,6 +1,6 @@
 {
   "name": "@thejohnfreeman/generator-python",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Python 3 package with docs, lint, tests, and CI.",
   "repository": {
     "type": "git",
