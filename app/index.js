@@ -112,6 +112,7 @@ module.exports = class extends Generator {
       'pyproject.toml',
       'README.rst',
       'LICENSE',
+      'tasks.py',
       '.travis.yml',
       'docs/conf.py',
       'docs/index.rst',
@@ -136,7 +137,6 @@ module.exports = class extends Generator {
       'docs/Makefile',
       'docs/make.bat',
       'docs/_static',
-      'tasks.py',
       'tests',
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
