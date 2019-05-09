@@ -112,7 +112,6 @@ module.exports = class extends Generator {
       'pyproject.toml',
       'README.rst',
       'LICENSE',
-      'Makefile',
       '.travis.yml',
       'docs/conf.py',
       'docs/index.rst',
@@ -137,6 +136,7 @@ module.exports = class extends Generator {
       'docs/Makefile',
       'docs/make.bat',
       'docs/_static',
+      'tasks.py',
       'tests',
     ].forEach(path => {
       this.fs.copy(this.templatePath(path), this.destinationPath(path))
@@ -173,6 +173,7 @@ module.exports = class extends Generator {
       await this._spawn('poetry', [
         'add',
         '--dev',
+        'invoke',
         'mypy',
         'pydocstyle',
         'pylint',
