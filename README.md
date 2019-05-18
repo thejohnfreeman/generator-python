@@ -23,7 +23,7 @@ Docs](https://project-template-python.readthedocs.io/).
 ## Install
 
 ```shell
-$ yarn global add yeoman @thejohnfreeman/generator-python
+$ yarn global add yo @thejohnfreeman/generator-python
 ```
 
 This generator assumes you are using [Poetry][] for managing Python packages.
