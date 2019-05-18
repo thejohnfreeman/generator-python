@@ -22,10 +22,6 @@ Docs](https://project-template-python.readthedocs.io/).
 
 ## Install
 
-```shell
-$ yarn global add yo @thejohnfreeman/generator-python
-```
-
 This generator assumes you are using [Poetry][] for managing Python packages.
 It will use whatever Python version is activated in your environment.
 I recommend using [pyenv][] to manage different versions of Python.
@@ -34,16 +30,21 @@ I recommend using [pyenv][] to manage different versions of Python.
 [Poetry]: https://poetry.eustace.io/
 
 ```shell
+# Required
 $ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+$ yarn global add yo @thejohnfreeman/generator-python
+# Optional
+$ curl https://pyenv.run | bash
 ```
 
 
 ## Use
 
-From within your project directory:
+From **within your project directory**:
 
 ```shell
-$ yo python
+$ pyenv local 3.6-dev
+$ yo @thejohnfreeman/python
 ```
 
 
