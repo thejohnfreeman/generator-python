@@ -133,8 +133,9 @@ module.exports = class extends Generator {
     }
     ;[
       '.gitignore',
-      '.pylintrc',
       '.style.yapf',
+      '.pylintrc',
+      '.pydocstyle',
       'docs/Makefile',
       'docs/make.bat',
       'docs/_static',
